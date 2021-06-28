@@ -1,0 +1,32 @@
+library(Seurat)
+library(SeuratObject)
+library(dplyr)
+library(patchwork)
+library(tidyverse)
+library(sleepwalk)
+library(SCINA)
+library(ggplot2)
+library(tidyseurat)
+
+dat <- readRDS("SeuratObj_afterQC.RDS")
+all.genes <- rownames(dat)
+
+#Making a Feature Plot
+FeaturePlot(dat, features = c("Orco", "Ir25a")
+FeaturePlot(dat, features = c("LOC5577794", "LOC5564219", "LOC5568592", "LOC5566698"))           #TRP Channels
+
+#Making a Dot Plot
+cd_genes <- c("Orco", "Ir21a")
+DotPlot(object = dat, features = cd_genes)
+
+#Subsetting Seurat object
+dat.IR21a <- subset(x = dat, subset = Ir21a > 1)
+
+
+
+"
+Questions 6/27/21:
+- What code to use for "top 100" cells? (Also what does the top 100 cells mean?
+- How to make a DotPlot that doesn't group by cluster identity?
+- How to assess average gene expression across all sample? (For comparing with bulk RNAseq, for example?)
+"
