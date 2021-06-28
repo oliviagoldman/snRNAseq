@@ -26,6 +26,7 @@ dat.IR21a <- subset(x = dat, subset = Ir21a > 1)
 
 "
 Questions 6/27/21:
+- How to access raw count matrix?
 - What code to use for "top 100" cells? (Also what does the top 100 cells mean?
 - How to make a DotPlot that doesn't group by cluster identity?
 - How to assess average gene expression across all sample? (For comparing with bulk RNAseq, for example?)
