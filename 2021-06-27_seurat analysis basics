@@ -22,7 +22,28 @@ DotPlot(object = dat, features = cd_genes)
 #Subsetting Seurat object
 dat.IR21a <- subset(x = dat, subset = Ir21a > 1)
 
+## 1 get thte count matrix from a Seurat Object
+library(Seurat)
+mtx <- GetAssayData(dat, slot = "counts")  # cells in columns and genes in rows
+mtx_t <- t(mtx) # cells in rows and genes in column
 
+## 2 subset the top 100 feature count cells
+dat$rank <- rank(dat$nFeature_RNA)
+dat_top100 <- subset(dat, subset = rank > max(dat$rank) - 100)
+
+## 3 cluster by information other than cluster
+## list the columns can be used for group:
+colnames(dat[[]])
+## for example you have cell type infomation
+Idents(dat) <- "celltype"
+FeaturePlot(dat, features="GeneName", label=TRUE)
+## another example
+dat$geneA_Exp <- mtx[c("geneA"),] > 0
+Idents(dat) <- "geneA_Exp"
+FeaturePlot(dat, features="geneA", label=TRUE)
+
+## 4 mean feature Count of certain gene:
+geneA_mean <- mean(mtx[c("geneA"),])
 
 "
 Questions 6/27/21:
