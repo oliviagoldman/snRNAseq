@@ -1,0 +1,26 @@
+#Hi Wei - I'm wondering how to subset a dataset on multiple conditions.
+#I'm working on the following command, but I want it to be more complicted/include more filtering.
+
+dat.elav <- subset(x = dat, subset = LOC5570204 > 2 & LOC5565901 > 2)
+
+
+#Question 1
+#Let's say I want cells that express 2 out of 5 given genes - they don't need to express all five, just any of the two. Would you know how to do this?
+
+if ( ((geneA > 1) + (geneB > 2) + (geneC > 0.5) + (geneD > 1)) >=2 ) {
+  ...put cell into subset...
+  }
+  
+#Question 2
+#Let's say I made two subsets and I want to combine them. 
+dat.brp <- subset(x = dat, subset = LOC5570381 > 2)
+dat.CadN <- subset(x = dat, subset = LOC5564848 > 2)
+dat.brpcad <- merge(dat.brp, dat.CadN)
+
+#I get this warning message:
+
+#Warning message:
+#In CheckDuplicateCellNames(object.list = objects) :
+#  Some cell names are duplicated across objects provided. Renaming to enforce unique cell names.
+ 
+#Is there anyway to merge the subsets without it renaming identical rows?
