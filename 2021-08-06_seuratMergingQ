@@ -18,11 +18,11 @@ dat.elav <- subset(dat, subset = ( ((geneA>1) + (geneB>2) + (geneC>0.5) + (geneD
 #Question 2
 #Let's say I made two subsets and I want to combine them. 
 dat.brp <- subset(x = dat, subset = LOC5570381 > 2)
-dat.CadN <- subset(x = dat, subset = LOC5570381 > 2)
+dat.CadN <- subset(x = dat, subset = LOC5564848 > 2)
 dat.brpcad <- merge(dat.brp, dat.CadN)
 
 # it is a logical "or"
-dat.brpcad <- subset(dat, subset = ( LOC5570381 > 2 | LOC5570381 > 2 ))
+dat.brpcad <- subset(dat, subset = ( LOC5570381 > 2 | LOC5564848 > 2 ))
 
 #I get this warning message:
 
